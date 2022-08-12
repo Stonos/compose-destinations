@@ -5,9 +5,11 @@ import androidx.compose.runtime.collectAsState
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.ramcosta.composedestinations.spec.DestinationStyle
+import com.ramcosta.destinations.sample.TasksNavGraph
 import com.ramcosta.destinations.sample.core.viewmodel.viewModel
 import com.ramcosta.destinations.sample.ui.composables.TitleConfirmDialog
 
+@TasksNavGraph
 @Destination(style = DestinationStyle.Dialog::class)
 @Composable
 fun AddTaskDialog(

@@ -16,6 +16,7 @@ import androidx.navigation.NavHostController
 import com.ramcosta.composedestinations.navigation.navigate
 import com.ramcosta.composedestinations.navigation.popBackStack
 import com.ramcosta.composedestinations.navigation.popUpTo
+import com.ramcosta.composedestinations.spec.NavGraphSpec
 import com.ramcosta.composedestinations.utils.isRouteOnBackStack
 import com.ramcosta.destinations.sample.NavGraphs
 import com.ramcosta.destinations.sample.R
@@ -34,7 +35,7 @@ fun BottomBar(
                     if (isCurrentDestOnBackStack) {
                         // When we click again on a bottom bar item and it was already selected
                         // we want to pop the back stack until the initial destination of this bottom bar item
-                        navController.popBackStack(destination.direction, false)
+                        navController.popBackStack(destination.direction.startRoute, false)
                         return@BottomNavigationItem
                     }
 
@@ -66,11 +67,11 @@ fun BottomBar(
 }
 
 enum class BottomBarItem(
-    val direction: DirectionDestination,
+    val direction: NavGraphSpec,
     val icon: ImageVector,
     @StringRes val label: Int
 ) {
-    TaskList(TaskListScreenDestination, Icons.Default.List, R.string.task_list_screen),
-    Account(AccountScreenDestination, Icons.Default.Person, R.string.account_screen),
-    Settings(SettingsScreenDestination, Icons.Default.Settings, R.string.settings_screen)
+    TaskList(NavGraphs.tasks, Icons.Default.List, R.string.task_list_screen),
+    Account(NavGraphs.account, Icons.Default.Person, R.string.account_screen),
+    Settings(NavGraphs.settings, Icons.Default.Settings, R.string.settings_screen)
 }
